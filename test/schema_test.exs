@@ -60,7 +60,7 @@ defmodule WaffleTest.Ecto.Schema do
     upload = build_upload("/path/to/my/file.png")
     cs = TestUser.changeset(%TestUser{}, %{"avatar" => upload})
     assert cs.valid?
-    %{file_name: "file.png", updated_at: _} = cs.changes.avatar
+    assert "file.png" == cs.changes.avatar
   end
 
   test_with_mock "cascades storage error into an error", DummyDefinition,
